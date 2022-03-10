@@ -2,34 +2,35 @@
 
 namespace EmployeeWage
 {
-    class EmpWage
+    public class EmpWage
     {
-        static void Main(string[] args)
+        public const int is_Full_Time = 1;
+        public const int is_Part_Time = 2;
+
+        public const int ratePerHrs = 20;
+
+
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Employee Wage Program");
-
-            int is_Full_Time = 1;
-            int is_Half_Time = 2;
             int empWage = 0;
-            int ratePerHrs = 20;
             int empHrs = 0;
-
+            
             Random employee = new Random();
             int randomInput = employee.Next(0, 3);
 
-            if (randomInput == is_Full_Time)
+            switch (randomInput)
             {
-                Console.WriteLine("Full Time Employee is Present");
-                empHrs = 8;
-            }
-            else if (randomInput == is_Half_Time)
-            {
-                Console.WriteLine("Part Time Employee is Present");
-                empHrs = 8 / 2;
-            }
-            else
-            {
-                Console.WriteLine("Employee is Absent");
+                case is_Full_Time:
+                    empHrs = 8;
+                    break;
+
+                case is_Part_Time:
+                    empHrs = 4;
+                    break;
+
+                default:
+                    empHrs = 0;
+                    break;
             }
             empWage = ratePerHrs * empHrs;
             Console.WriteLine("Employee wage per day: " + empWage);
