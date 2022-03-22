@@ -2,16 +2,16 @@
 
 namespace EmployeeWage
 {
-    public class EmpWage
+    internal class ComputeEmployeeWage
     {
         public const int is_Full_Time = 1;
         public const int is_Part_Time = 2;
-        public const int ratePerHrs = 20;
-        public const int max_Working_Days = 20;
-        public const int max_Working_Hrs = 100;
-
-        public static void Main(string[] args)
+        public const int RatePerHrs = 20;
+        public const int Max_Working_Days = 20;
+        public const int Max_Working_Hrs = 100;
+        public static void Compute_wage()
         {
+
             int empWage = 0;
             int empHrs = 0;
             int totalEmpWage = 0;
@@ -21,7 +21,7 @@ namespace EmployeeWage
 
 
             Random employee = new Random();
-            while (totalEmpHrs <= max_Working_Hrs && totalDays <= max_Working_Days)
+            for (int day = 1; day <= Max_Working_Days; day++)
             {
                 int randomInput = employee.Next(0, 3);
 
@@ -43,14 +43,21 @@ namespace EmployeeWage
                         break;
                 }
                 totalEmpHrs = totalEmpHrs + empHrs;
-                empWage = ratePerHrs * empHrs;
-                totalEmpWage = ratePerHrs * totalEmpHrs;
-                Console.WriteLine("{0}Emplyee of day: {1}wage is {2}", typeOfEmployee, totalDays, empWage);
+                empWage = RatePerHrs * empHrs;
+                totalEmpWage = RatePerHrs * totalEmpHrs;
+                Console.WriteLine("{0}Emplyee of day: {1}wage is {2}", typeOfEmployee, day, empWage);
                 totalEmpWage = totalEmpWage + empWage;
                 totalDays++;
             }
-            Console.WriteLine("Employee wage for {0} day is : {1}", max_Working_Days, totalEmpWage);
-          
+            Console.WriteLine("Employee wage for {0} day is : {1}", Max_Working_Days, totalEmpWage);
+            Console.ReadLine();
+
         }
+        public static void Main(String[] args)
+        {
+            ComputeEmployeeWage.Compute_wage();
+        }
+
     }
+
 }
